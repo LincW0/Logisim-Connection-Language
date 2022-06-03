@@ -1,0 +1,6 @@
+IN 2;
+AND 1;
+OUT 1;
+CNCT input[0],and[0][0];
+CNCT input[1],and[0][1];
+CNCT and[0],output[0][0];

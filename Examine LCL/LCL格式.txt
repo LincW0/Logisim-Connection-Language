@@ -1,0 +1,17 @@
+LCL格式
+IN 数量;（标识符：input）
+OUT 数量;（标识符：output）
+NOT 数量; （标识符：not）
+AND 数量; （标识符：and）
+XOR 数量; （标识符：xor）
+OR 数量; （标识符：or）
+IMPT 绝对路径,引用标识符;
+对于任意一个标识符，存在输入xxx.in[n]和输出xxx.out[m]
+struct node
+{
+
+}
+struct connection
+{
+    node input,output;
+}
