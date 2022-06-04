@@ -1,9 +1,8 @@
 # Logisim-Connection-Language
- A better way of describing Logisim connections. \
+ A better way of describing Logisim connections.
 
- Current version: beta 0.5.1 \
+ Current version: beta 0.5.1
 
- Compile /Compiler/compiler.cpp with gcc. \
+ Compile /Compiler/compiler.cpp with gcc.
 
- This does not support the "IMPT" feature addressed in /Examine LCL/LCLFormat.txt \
- 
+ This does not support the "IMPT" feature addressed in /Examine LCL/LCLFormat.txt
