@@ -298,10 +298,9 @@ void constructCIRC()
 	{
 		fundamentals::wire(true,2,1+NOTs[i].out->ypos*2,xend*2-1);
 		fundamentals::wire(false,3+NOTs[i].xpos*2,1+NOTs[i].in[0]->ypos*2,taken*2-NOTs[i].in[0]->ypos*2);
-		fundamentals::wire(false,10+NOTs[i].xpos*2,1+NOTs[i].out->ypos*2,taken*2-NOTs[i].out->ypos*2);
+		fundamentals::wire(false,8+NOTs[i].xpos*2,1+NOTs[i].out->ypos*2,taken*2-NOTs[i].out->ypos*2);
 		fundamentals::NOT(8+NOTs[i].xpos*2,taken*2+1);
 		fundamentals::wire(true,3+NOTs[i].xpos*2,taken*2+1,3);
-		fundamentals::wire(true,8+NOTs[i].xpos*2,taken*2+1,2);
 	}
 	fundamentals::end();
 }
