@@ -19,9 +19,9 @@ CNCT and[0],and[1][0];
 CNCT input[1],and[1][1];
 
 CNCT xor[0],xor[2][0];
-CNCT input[2],xor[2][1];
+CNCT input[3],xor[2][1];
 CNCT xor[0],and[2][0];
-CNCT input[2],and[2][1];
+CNCT input[3],and[2][1];
 
 CNCT and[2],output[1][0];
 

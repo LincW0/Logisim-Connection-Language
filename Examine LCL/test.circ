@@ -101,7 +101,7 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <wire from="(330,240)" to="(340,240)"/>
     <wire from="(20,130)" to="(590,130)"/>
     <wire from="(430,150)" to="(430,230)"/>
-    <wire from="(450,50)" to="(450,250)"/>
+    <wire from="(450,70)" to="(450,250)"/>
     <wire from="(500,130)" to="(500,240)"/>
     <comp lib="1" loc="(490,240)" name="AND Gate">
       <a name="size" val="30"/>
@@ -143,7 +143,7 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <wire from="(210,250)" to="(220,250)"/>
     <wire from="(20,190)" to="(590,190)"/>
     <wire from="(350,150)" to="(350,230)"/>
-    <wire from="(370,50)" to="(370,250)"/>
+    <wire from="(370,70)" to="(370,250)"/>
     <wire from="(420,190)" to="(420,240)"/>
     <comp lib="1" loc="(420,240)" name="XOR Gate">
       <a name="size" val="30"/>
@@ -151,5 +151,20 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     </comp>
     <wire from="(350,230)" to="(380,230)"/>
     <wire from="(370,250)" to="(380,250)"/>
+    <comp lib="0" loc="(590,90)" name="Pin">
+      <a name="output" val="true"/>
+      <a name="facing" val="west"/>
+      <a name="tristate" val="false"/>
+    </comp>
+    <comp lib="0" loc="(590,130)" name="Pin">
+      <a name="output" val="true"/>
+      <a name="facing" val="west"/>
+      <a name="tristate" val="false"/>
+    </comp>
+    <comp lib="0" loc="(590,210)" name="Pin">
+      <a name="output" val="true"/>
+      <a name="facing" val="west"/>
+      <a name="tristate" val="false"/>
+    </comp>
   </circuit>
 </project>
