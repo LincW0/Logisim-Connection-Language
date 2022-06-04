@@ -53,16 +53,27 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <a name="clabel" val=""/>
     <a name="clabelup" val="east"/>
     <a name="clabelfont" val="SansSerif plain 12"/>
-    <wire from="(20,10)" to="(10,10)"/>
-    <wire from="(10,10)" to="(10,30)"/>
-    <wire from="(30,10)" to="(30,50)"/>
-    <wire from="(80,10)" to="(80,40)"/>
-    <comp lib="1" loc="(70,40)" name="AND Gate">
+    <comp lib="0" loc="(20,10)" name="Pin">
+      <a name="output" val="false"/>
+      <a name="facing" val="east"/>
+      <a name="tristate" val="false"/>
+    </comp>
+    <wire from="(20,10)" to="(110,10)"/>
+    <comp lib="0" loc="(20,30)" name="Pin">
+      <a name="output" val="false"/>
+      <a name="facing" val="east"/>
+      <a name="tristate" val="false"/>
+    </comp>
+    <wire from="(20,30)" to="(110,30)"/>
+    <wire from="(20,50)" to="(110,50)"/>
+    <wire from="(30,10)" to="(30,70)"/>
+    <wire from="(50,30)" to="(50,90)"/>
+    <wire from="(100,50)" to="(100,80)"/>
+    <comp lib="1" loc="(100,80)" name="XOR Gate">
       <a name="size" val="30"/>
       <a name="inputs" val="2"/>
     </comp>
-    <wire from="(10,30)" to="(40,30)"/>
-    <wire from="(30,50)" to="(40,50)"/>
-    <wire from="(70,40)" to="(80,40)"/>
+    <wire from="(30,70)" to="(60,70)"/>
+    <wire from="(50,90)" to="(60,90)"/>
   </circuit>
 </project>
