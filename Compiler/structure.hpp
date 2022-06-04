@@ -2,18 +2,21 @@
 namespace structure
 {
 	struct Connection;
+	int taken,occupied;
 	class Node
 	{
 		public:
 			Node *out[9999];
 			Connection *father;
 			int i,ypos,xend,xstart; 
-			Node(Connection *fat)
+			bool output;
+			Node(Connection *fat,bool out)
 			{
 				this->father=fat;
 				this->i=0;
 				xend=0;
 				xstart=-1;
+				output=out;
 			}
 			Node()
 			{
@@ -21,21 +24,22 @@ namespace structure
 				this->i=0;
 				ypos=-1;
 				xend=0;
-				xstart=0;
+				output=1;
 			}
 			void connect(Node* cnct_to)
 			{
+				if(cnct_to->output || (!output))
+				{
+					std::cerr<<"ERROR:Connection Error"<<std::endl;
+				}
 				this->out[i]=cnct_to;//ANDs[0].in[0]
 				this->i=this->i+1;
 				return;
 			}
-			void setYPos(int y)
+			void setYPos()
 			{
-				ypos=y;
-			}
-			void setXPos(int x)
-			{
-				xstart=x;
+				ypos=taken;
+				taken++;
 			}
 			void conW(int x)
 			{
@@ -49,14 +53,15 @@ namespace structure
 		int xpos;
 		Connection()
 		{
-			in[0]=new Node(this);
-			in[1]=new Node(this);
-			out=new Node(this);
+			in[0]=new Node(this,0);
+			in[1]=new Node(this,0);
+			out=new Node(this,1);
 			xpos=-1;
 		}
-		void setXPos(int x)
+		void setXPos()
 		{
-			xpos=x;
+			xpos=occupied;
+			occupied+=4;
 		}
 	};
 }
