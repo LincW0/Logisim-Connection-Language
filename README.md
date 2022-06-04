@@ -1,7 +1,7 @@
 # Logisim-Connection-Language
  A better way of describing Logisim connections.
 
- Current version: beta 0.5.1
+ Current version: beta 0.6
 
  Compile /Compiler/compiler.cpp with gcc.
 
