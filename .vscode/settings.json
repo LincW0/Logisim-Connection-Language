@@ -46,5 +46,6 @@
         "typeinfo": "cpp",
         "valarray": "cpp"
     },
+    
     "cmake.sourceDirectory": "${workspaceFolder}/WindowsClient/QtProject"
 }
