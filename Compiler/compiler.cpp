@@ -4,7 +4,6 @@
 #include "fundamentals.hpp"
 using namespace std;
 using namespace structure; 
-using namespace fundamentals; 
 Connection ANDs[1001];
 Connection ORs[1001];
 Connection XORs[1001];
@@ -27,6 +26,7 @@ int main(int argc,char *argv[]){
 	//freopen("E:\\Chip (potato)\\ALU Design\\Independent\\Examine LCL\\test.lcl","r",stdin);
 	parseLCL();
 	constructRelativePosition();
+	constructCIRC();
 	return 0;
 }
 void parseLCL()
@@ -41,7 +41,6 @@ void parseLCL()
 	}
 	string line="";
 	while(getline(cin,line)){
-		cout<<line<<endl;
 		if(line[0]=='I'&&line[1]=='N'&&line[1]==' '){
 			int bits=line.length()-4;
 			int sum=0;
@@ -154,6 +153,22 @@ void constructRelativePosition()
 	{
 		INPUTs[i].setYPos();
 	}
+	for(int i=0;i<number_of_and;++i)
+	{
+		ANDs[i].out->setYPos();
+	}
+	for(int i=0;i<number_of_xor;++i)
+	{
+		XORs[i].out->setYPos();
+	}
+	for(int i=0;i<number_of_or;++i)
+	{
+		ORs[i].out->setYPos();
+	}
+	for(int i=0;i<number_of_not;++i)
+	{
+		NOTs[i].out->setYPos();
+	}
 	for(int i=0;i<number_of_input;++i)
 	{
 		for(int j=0;j<1001;++j)
@@ -163,8 +178,7 @@ void constructRelativePosition()
 			if(INPUTs[i].out[j]->father->xpos==-1)
 			{
 				INPUTs[i].out[j]->father->setXPos();
-				INPUTs[i].conW(INPUTs[i].out[j]->father->xpos+1);
-				INPUTs[i].out[j]->father->out->setYPos();
+				INPUTs[i].conW(INPUTs[i].out[j]->father->xpos+2);
 				INPUTs[i].out[j]->father->out->conW(INPUTs[i].out[j]->father->xpos+5);
 			}
 			else
@@ -173,29 +187,127 @@ void constructRelativePosition()
 			}
 		}
 	}
-}
-void constructCIRC()
-{
-	init();
-	for(int i=0;i<number_of_input;++i)
-	{
-		IO(false,2,1+i*2);
-		wire(true,2,1+i*2,INPUTs[i].xend*2-1);
-	}
 	for(int i=0;i<number_of_and;++i)
 	{
-		wire(true,2,1+ANDs[i].out->ypos*2,ANDs[i].out->xend*2-1);
-	}
-	for(int i=0;i<number_of_or;++i)
-	{
-		wire(true,2,1+ORs[i].out->ypos*2,ORs[i].out->xend*2-1);
+		for(int j=0;j<1001;++j)
+		{
+			if(ANDs[i].out->out[j]==NULL) break;
+			if(ANDs[i].out->out[j]->father->typ=='o') continue;
+			if(ANDs[i].out->out[j]->father->xpos==-1)
+			{
+				ANDs[i].out->out[j]->father->setXPos();
+				ANDs[i].out->conW(ANDs[i].out->out[j]->father->xpos+2);
+				ANDs[i].out->out[j]->father->out->conW(ANDs[i].out->out[j]->father->xpos+5);
+			}
+			else
+			{
+				ANDs[i].out->conW(ANDs[i].out->out[j]->father->xpos+2);
+			}
+		}
 	}
 	for(int i=0;i<number_of_xor;++i)
 	{
-		wire(true,2,1+XORs[i].out->ypos*2,XORs[i].out->xend*2-1);
+		for(int j=0;j<1001;++j)
+		{
+			if(XORs[i].out->out[j]==NULL) break;
+			if(XORs[i].out->out[j]->father->typ=='o') continue;
+			if(XORs[i].out->out[j]->father->xpos==-1)
+			{
+				XORs[i].out->out[j]->father->setXPos();
+				XORs[i].out->conW(XORs[i].out->out[j]->father->xpos+2);
+				XORs[i].out->out[j]->father->out->conW(XORs[i].out->out[j]->father->xpos+5);
+			}
+			else
+			{
+				XORs[i].out->conW(XORs[i].out->out[j]->father->xpos+2);
+			}
+		}
+	}
+	for(int i=0;i<number_of_or;++i)
+	{
+		for(int j=0;j<1001;++j)
+		{
+			if(ORs[i].out->out[j]==NULL) break;
+			if(ORs[i].out->out[j]->father->typ=='o') continue;
+			if(ORs[i].out->out[j]->father->xpos==-1)
+			{
+				ORs[i].out->out[j]->father->setXPos();
+				ORs[i].out->conW(ORs[i].out->out[j]->father->xpos+2);
+				ORs[i].out->out[j]->father->out->conW(ORs[i].out->out[j]->father->xpos+5);
+			}
+			else
+			{
+				ORs[i].out->conW(ORs[i].out->out[j]->father->xpos+2);
+			}
+		}
 	}
 	for(int i=0;i<number_of_not;++i)
 	{
-		wire(true,2,1+NOTs[i].out->ypos*2,NOTs[i].out->xend*2-1);
+		for(int j=0;j<1001;++j)
+		{
+			if(NOTs[i].out->out[j]==NULL) break;
+			if(NOTs[i].out->out[j]->father->typ=='o') continue;
+			if(NOTs[i].out->out[j]->father->xpos==-1)
+			{
+				NOTs[i].out->out[j]->father->setXPos();
+				NOTs[i].out->conW(NOTs[i].out->out[j]->father->xpos+2);
+				NOTs[i].out->out[j]->father->out->conW(NOTs[i].out->out[j]->father->xpos+5);
+			}
+			else
+			{
+				NOTs[i].out->conW(NOTs[i].out->out[j]->father->xpos+2);
+			}
+		}
 	}
+}
+void constructCIRC()
+{
+	fundamentals::init();
+	for(int i=0;i<number_of_input;++i)
+	{
+		fundamentals::IO(false,2,1+i*2);
+		fundamentals::wire(true,2,1+i*2,INPUTs[i].xend*2-1);
+	}
+	for(int i=0;i<number_of_and;++i)
+	{
+		fundamentals::wire(true,2,1+ANDs[i].out->ypos*2,ANDs[i].out->xend*2-1);
+		fundamentals::wire(false,3+ANDs[i].xpos*2,1+ANDs[i].in[0]->ypos*2,taken*2-ANDs[i].in[0]->ypos*2);
+		fundamentals::wire(false,5+ANDs[i].xpos*2,1+ANDs[i].in[1]->ypos*2,taken*2-ANDs[i].in[1]->ypos*2+2);
+		fundamentals::wire(false,10+ANDs[i].xpos*2,1+ANDs[i].out->ypos*2,taken*2-ANDs[i].out->ypos*2+1);
+		fundamentals::AND(9+ANDs[i].xpos*2,taken*2+2);
+		fundamentals::wire(true,3+ANDs[i].xpos*2,taken*2+1,3);
+		fundamentals::wire(true,5+ANDs[i].xpos*2,taken*2+3,1);
+		fundamentals::wire(true,9+ANDs[i].xpos*2,taken*2+2,1);
+	}
+	for(int i=0;i<number_of_or;++i)
+	{
+		fundamentals::wire(true,2,1+ORs[i].out->ypos*2,ORs[i].out->xend*2-1);
+		fundamentals::wire(false,3+ORs[i].xpos*2,1+ORs[i].in[0]->ypos*2,taken*2-ORs[i].in[0]->ypos*2);
+		fundamentals::wire(false,5+ORs[i].xpos*2,1+ORs[i].in[1]->ypos*2,taken*2-ORs[i].in[1]->ypos*2+2);
+		fundamentals::wire(false,10+ORs[i].xpos*2,1+ORs[i].out->ypos*2,taken*2-ORs[i].out->ypos*2+1);
+		fundamentals::OR(9+ORs[i].xpos*2,taken*2+2);
+		fundamentals::wire(true,3+ORs[i].xpos*2,taken*2+1,3);
+		fundamentals::wire(true,5+ORs[i].xpos*2,taken*2+3,1);
+		fundamentals::wire(true,9+ORs[i].xpos*2,taken*2+2,1);
+	}
+	for(int i=0;i<number_of_xor;++i)
+	{
+		fundamentals::wire(true,2,1+XORs[i].out->ypos*2,XORs[i].out->xend*2-1);
+		fundamentals::wire(false,3+XORs[i].xpos*2,1+XORs[i].in[0]->ypos*2,taken*2-XORs[i].in[0]->ypos*2);
+		fundamentals::wire(false,5+XORs[i].xpos*2,1+XORs[i].in[1]->ypos*2,taken*2-XORs[i].in[1]->ypos*2+2);
+		fundamentals::wire(false,10+XORs[i].xpos*2,1+XORs[i].out->ypos*2,taken*2-XORs[i].out->ypos*2+1);
+		fundamentals::XOR(9+XORs[i].xpos*2,taken*2+2);
+		fundamentals::wire(true,3+XORs[i].xpos*2,taken*2+1,3);
+		fundamentals::wire(true,5+XORs[i].xpos*2,taken*2+3,1);
+	}
+	for(int i=0;i<number_of_not;++i)
+	{
+		fundamentals::wire(true,2,1+NOTs[i].out->ypos*2,NOTs[i].out->xend*2-1);
+		fundamentals::wire(false,3+NOTs[i].xpos*2,1+NOTs[i].in[0]->ypos*2,taken*2-NOTs[i].in[0]->ypos*2);
+		fundamentals::wire(false,10+NOTs[i].xpos*2,1+NOTs[i].out->ypos*2,taken*2-NOTs[i].out->ypos*2);
+		fundamentals::NOT(9+NOTs[i].xpos*2,taken*2+2);
+		fundamentals::wire(true,3+NOTs[i].xpos*2,taken*2+1,3);
+		fundamentals::wire(true,9+NOTs[i].xpos*2,taken*2+1,2);
+	}
+	fundamentals::end();
 }
