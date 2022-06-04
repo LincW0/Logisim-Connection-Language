@@ -1,5 +1,5 @@
 /*compiler*/
-#include <bits/stdc++.h>
+#include <iostream>
 #include "structure.hpp"
 #include "fundamentals.hpp"
 using namespace std;

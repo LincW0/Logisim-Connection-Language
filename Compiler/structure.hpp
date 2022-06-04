@@ -10,13 +10,17 @@ namespace structure
 			Connection *father;
 			int i,ypos,xend,xstart; 
 			bool output;
-			Node(Connection *fat,bool out)
+			Node(Connection *fat,bool ou)
 			{
 				this->father=fat;
 				this->i=0;
 				xend=0;
 				xstart=-1;
-				output=out;
+				output=ou;
+				for(int i=0;i<9999;++i)
+				{
+					out[i]=NULL;
+				}
 			}
 			Node()
 			{
@@ -25,6 +29,10 @@ namespace structure
 				ypos=-1;
 				xend=0;
 				output=1;
+				for(int i=0;i<9999;++i)
+				{
+					out[i]=NULL;
+				}
 			}
 			void connect(Node* cnct_to)
 			{
