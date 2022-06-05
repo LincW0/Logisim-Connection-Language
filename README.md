@@ -2,11 +2,13 @@
 
  A better way of describing Logisim connections.
 
- Current version: beta 0.6.3
+ Current version: beta 0.7
 
  Compile /Compiler/compiler.cpp with gcc.
 
  This does not support the "IMPT" feature addressed in /Formats/LCLFormat.txt
+
+ output components are now fully organized.
 
 ## Update log
 
@@ -42,4 +44,4 @@
 
 ### Beta0.7 update
 
- Added Feature: output components are now fully organized.
+ Added Feature: Output components are now fully organized.
