@@ -11,7 +11,7 @@ CNCT input[2],xor[0][1];
 CNCT input[0],and[0][0];
 CNCT input[2],and[0][1];
 
-CNCT and[0],output[0][0];
+CNCT xor[0],output[0][0];
 
 //第二位
 CNCT and[0],xor[1][0];
@@ -24,9 +24,9 @@ CNCT input[3],xor[2][1];
 CNCT xor[0],and[2][0];
 CNCT input[3],and[2][1];
 
-CNCT and[2],output[1][0];
+CNCT xor[2],output[1][0];
 
-CNCT xor[1],or[0][0];
-CNCT xor[2],or[0][1];
+CNCT and[1],or[0][0];
+CNCT and[2],or[0][1];
 
 CNCT or[0],output[2][0];

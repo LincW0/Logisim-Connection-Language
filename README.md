@@ -2,9 +2,7 @@
 
  A better way of describing Logisim connections.
 
- Current version: beta 0.6.2
-
- Bug notice: Every version before Beta0.6.2 (including Beta0.6.2) have bugs, stop using them!
+ Current version: beta 0.6.3
 
  Compile /Compiler/compiler.cpp with gcc.
 
@@ -37,3 +35,7 @@
 #### Beta0.6.2 update
 
  Bug notice: Every version before Beta0.6.2 (including Beta0.6.2) have bugs, stop using them!
+
+#### Beta0.6.3 update
+
+ False alarm: Beta0.6.2 doesn't have any bug.
