@@ -1,8 +1,8 @@
-LCL格式
-IN 数量;（标识符：input[n]）
-OUT 数量;（标识符：output[n]）
-NOT 数量; （标识符：not[n]）
-AND 数量; （标识符：and[n]）
-XOR 数量; （标识符：xor[n]）
-OR 数量; （标识符：or[n]
-CNCT 传入标识符,传出标识符[输入编号];
+LCL Format
+IN number_of_inputs; (identifier:input[n])
+OUT number_of_outputs; (identifier:output[n])
+NOT number_of_nots; (identifier:not[n])
+AND number_of_ands; (identifier:and[n])
+XOR number_of_xors; (identifier:xor[n])
+OR number_of_ors; (identifier:or[n])
+CNCT (identifier of the component that's providing the bit)[which_output],(identifier of the component that's using the bit)[which_input];
