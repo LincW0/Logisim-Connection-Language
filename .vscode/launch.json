@@ -6,8 +6,8 @@
             "type": "cppdbg",         
             "request": "launch",    
             "program": "${fileDirname}/${fileBasenameNoExtension}.exe",// 将要进行调试的程序的路径
-            "args": [],                // 程序调试时传递给程序的命令行参数，一般设为空即可
-            "stopAtEntry": false,     // 设为true时程序将暂停在程序入口处，一般设置为false
+            "args": [],                
+            "stopAtEntry": false,    
             "cwd": "${workspaceRoot}",// 调试程序时的工作目录，一般为${workspaceRoot}即代码所在目录
             "environment": [],
             "externalConsole": true,// 调试时是否显示控制台窗口，一般设置为true显示控制台
