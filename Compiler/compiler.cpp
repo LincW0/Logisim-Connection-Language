@@ -1,7 +1,7 @@
 /*compiler*/
 #include <iostream>
-#include "structure.h"
-#include "fundamentals.h"
+#include "structure.hpp"
+#include "fundamentals.hpp"
 using namespace std;
 using namespace structure; 
 Connection ANDs[1001];
