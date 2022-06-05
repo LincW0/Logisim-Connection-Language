@@ -8,7 +8,7 @@
 
  This does not support the "IMPT" feature addressed in /Formats/LCLFormat.txt
 
- output components are now fully organized.
+ Output components are now fully organized.
 
 ## Update log
 
