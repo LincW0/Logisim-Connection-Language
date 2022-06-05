@@ -29,3 +29,7 @@
  Added feature: Output components are now placed according to the source code.
 
  This version doesn't arrange outputs' order.
+
+#### Beta0.6.1 update
+
+ Rearranged the directories.
