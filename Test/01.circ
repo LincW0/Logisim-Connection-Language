@@ -100,7 +100,7 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <wire from="(290,250)" to="(300,250)"/>
     <wire from="(330,240)" to="(340,240)"/>
     <wire from="(20,130)" to="(590,130)"/>
-    <wire from="(430,150)" to="(430,230)"/>
+    <wire from="(430,170)" to="(430,230)"/>
     <wire from="(450,70)" to="(450,250)"/>
     <wire from="(500,130)" to="(500,240)"/>
     <comp lib="1" loc="(490,240)" name="AND Gate">
@@ -111,8 +111,8 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <wire from="(450,250)" to="(460,250)"/>
     <wire from="(490,240)" to="(500,240)"/>
     <wire from="(20,210)" to="(590,210)"/>
-    <wire from="(510,170)" to="(510,230)"/>
-    <wire from="(530,190)" to="(530,250)"/>
+    <wire from="(510,110)" to="(510,230)"/>
+    <wire from="(530,130)" to="(530,250)"/>
     <wire from="(580,210)" to="(580,240)"/>
     <comp lib="1" loc="(570,240)" name="OR Gate">
       <a name="size" val="30"/>
@@ -142,7 +142,7 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <wire from="(190,230)" to="(220,230)"/>
     <wire from="(210,250)" to="(220,250)"/>
     <wire from="(20,190)" to="(590,190)"/>
-    <wire from="(350,150)" to="(350,230)"/>
+    <wire from="(350,170)" to="(350,230)"/>
     <wire from="(370,70)" to="(370,250)"/>
     <wire from="(420,190)" to="(420,240)"/>
     <comp lib="1" loc="(420,240)" name="XOR Gate">
@@ -151,16 +151,16 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     </comp>
     <wire from="(350,230)" to="(380,230)"/>
     <wire from="(370,250)" to="(380,250)"/>
-    <wire from="(590,90)" to="(600,90)"/>
-    <wire from="(600,10)" to="(600,90)"/>
+    <wire from="(590,150)" to="(600,150)"/>
+    <wire from="(600,10)" to="(600,150)"/>
     <wire from="(600,10)" to="(630,10)"/>
     <comp lib="0" loc="(630,10)" name="Pin">
       <a name="output" val="true"/>
       <a name="facing" val="west"/>
       <a name="tristate" val="false"/>
     </comp>
-    <wire from="(590,130)" to="(610,130)"/>
-    <wire from="(610,30)" to="(610,130)"/>
+    <wire from="(590,190)" to="(610,190)"/>
+    <wire from="(610,30)" to="(610,190)"/>
     <wire from="(610,30)" to="(630,30)"/>
     <comp lib="0" loc="(630,30)" name="Pin">
       <a name="output" val="true"/>

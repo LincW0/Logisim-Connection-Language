@@ -39,3 +39,7 @@
 #### Beta0.6.3 update
 
  False alarm: Beta0.6.2 doesn't have any bug.
+
+### Beta0.7 update
+
+ Added Feature: output components are now fully organized.
