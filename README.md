@@ -2,13 +2,13 @@
 
  A better way of describing Logisim connections.
 
- Current version: beta 0.6
+ Current version: beta 0.6.2
+
+ Bug notice: Every version before Beta0.6.2 (including Beta0.6.2) have bugs, stop using them!
 
  Compile /Compiler/compiler.cpp with gcc.
 
- This does not support the "IMPT" feature addressed in /Examine LCL/LCLFormat.txt
-
- Outputs' order is not arranged, which means that you might need to find out the correct order of the outputs yourself.
+ This does not support the "IMPT" feature addressed in /Formats/LCLFormat.txt
 
 ## Update log
 
@@ -33,3 +33,7 @@
 #### Beta0.6.1 update
 
  Rearranged the directories.
+
+#### Beta0.6.2 update
+
+ Bug notice: Every version before Beta0.6.2 (including Beta0.6.2) have bugs, stop using them!

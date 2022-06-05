@@ -304,7 +304,10 @@ void constructCIRC()
 	}
 	for(int i=0;i<number_of_output;++i)
 	{
-		fundamentals::IO(true,xend*2+1,1+OUTPUTs[i].in[0]->ypos*2);
+		fundamentals::wire(true,xend*2+1,OUTPUTs[i].in[0]->ypos*2+1,1+i);
+		fundamentals::wire(false,xend*2+2+i,i*2+1,OUTPUTs[i].in[0]->ypos*2-i*2);
+		fundamentals::wire(true,xend*2+2+i,i*2+1,number_of_output-i);
+		fundamentals::IO(true,xend*2+2+number_of_output,i*2+1);
 	}
 	fundamentals::end();
 }
