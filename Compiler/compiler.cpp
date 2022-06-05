@@ -1,7 +1,7 @@
 /*compiler*/
 #include <iostream>
-#include "structure.hpp"
-#include "fundamentals.hpp"
+#include "structure.h"
+#include "fundamentals.h"
 using namespace std;
 using namespace structure; 
 Connection ANDs[1001];
@@ -97,56 +97,75 @@ void parseLCL()
 		}
 		else if(line[0]=='C'&&line[1]=='N'&&line[2]=='C'&&line[3]=='T'&&line[4]==' '){
 			int num1;
-			int num2;
-			int num3=int(line[line.find("]",line.find(","))+2])-48;
+			int num2;//importing
+			int num3;
+			int num4;
 			
 			int bits1=line.find("]",4)-line.find("[",4)-1;
-			int bits2=line.find("]",line.find(","))-line.find("[",line.find(","))-1;
+			int bits2=line.find("]",line.find("]")+1)-line.find("[",line.find("]"))-1;
+			int bits3=line.find("]",line.find(","))-line.find("[",line.find(","))-1;
+			int bits4=line.find("]",line.find("]",line.find(","))+1)-line.find("[",line.find("]",line.find(",")))-1;
+			
+			//CNCT input[0][0],output[0][0];
+			
 			int sum1=0;
 			for(int i = line.find("[",4)+1; i<=bits1+line.find("[",4); i++){
 				sum1=sum1*10+int(line[i])-48;
 			}
 			num1=sum1;
+			
 			int sum2=0;
-			for(int i = line.find("[",line.find(","))+1; i<=bits2+line.find("[",line.find(",")); i++){
+			for(int i = line.find("[",line.find("]"))+1; i<=bits2+line.find("[",line.find("]")); i++){
 				sum2=sum2*10+int(line[i])-48;
 			}
 			num2=sum2;
 			
+			int sum3=0;
+			for(int i = line.find("[",line.find(","))+1; i<=bits3+line.find("[",line.find(",")); i++){
+				sum3=sum3*10+int(line[i])-48;
+			}
+			num3=sum3;
+			
+			int sum4=0;
+			for(int i = line.find("[",line.find("]",line.find(",")))+1; i<=bits4+line.find("[",line.find("]",line.find(","))); i++){
+				sum4=sum4*10+int(line[i])-48;
+			}
+			num4=sum4;
+			
 			if(line.substr(5,5)=="input"){
-				if(line.substr(line.find(",")+1,3)=="and") INPUTs[num1].connect(ANDs+num2,num3);
-				if(line.substr(line.find(",")+1,6)=="output") INPUTs[num1].connect(OUTPUTs+num2,num3);
-				if(line.substr(line.find(",")+1,2)=="or") INPUTs[num1].connect(ORs+num2,num3);
-				if(line.substr(line.find(",")+1,3)=="xor") INPUTs[num1].connect(XORs+num2,num3);
-				if(line.substr(line.find(",")+1,3)=="not") INPUTs[num1].connect(NOTs+num2,num3);
+				if(line.substr(line.find(",")+1,3)=="and") INPUTs[num1].connect(ANDs+num3,num4);
+				if(line.substr(line.find(",")+1,6)=="output") INPUTs[num1].connect(OUTPUTs+num3,num4);
+				if(line.substr(line.find(",")+1,2)=="or") INPUTs[num1].connect(ORs+num3,num4);
+				if(line.substr(line.find(",")+1,3)=="xor") INPUTs[num1].connect(XORs+num3,num4);
+				if(line.substr(line.find(",")+1,3)=="not") INPUTs[num1].connect(NOTs+num3,num4);
 			}
 			if(line.substr(5,3)=="and"){
-				if(line.substr(line.find(",")+1,3)=="and") ANDs[num1].out->connect(ANDs+num2,num3);
-				if(line.substr(line.find(",")+1,6)=="output") ANDs[num1].out->connect(OUTPUTs+num2,num3);
-				if(line.substr(line.find(",")+1,2)=="or") ANDs[num1].out->connect(ORs+num2,num3);
-				if(line.substr(line.find(",")+1,3)=="xor") ANDs[num1].out->connect(XORs+num2,num3);
-				if(line.substr(line.find(",")+1,3)=="not") ANDs[num1].out->connect(NOTs+num2,num3);
+				if(line.substr(line.find(",")+1,3)=="and") ANDs[num1].out->connect(ANDs+num3,num4);
+				if(line.substr(line.find(",")+1,6)=="output") ANDs[num1].out->connect(OUTPUTs+num3,num4);
+				if(line.substr(line.find(",")+1,2)=="or") ANDs[num1].out->connect(ORs+num3,num4);
+				if(line.substr(line.find(",")+1,3)=="xor") ANDs[num1].out->connect(XORs+num3,num4);
+				if(line.substr(line.find(",")+1,3)=="not") ANDs[num1].out->connect(NOTs+num3,num4);
 			}
 			if(line.substr(5,2)=="or"){
-				if(line.substr(line.find(",")+1,3)=="and") ORs[num1].out->connect(ANDs+num2,num3);
-				if(line.substr(line.find(",")+1,6)=="output") ORs[num1].out->connect(OUTPUTs+num2,num3);
-				if(line.substr(line.find(",")+1,2)=="or") ORs[num1].out->connect(ORs+num2,num3);
-				if(line.substr(line.find(",")+1,3)=="xor") ORs[num1].out->connect(XORs+num2,num3);
-				if(line.substr(line.find(",")+1,3)=="not") ORs[num1].out->connect(NOTs+num2,num3);
+				if(line.substr(line.find(",")+1,3)=="and") ORs[num1].out->connect(ANDs+num3,num4);
+				if(line.substr(line.find(",")+1,6)=="output") ORs[num1].out->connect(OUTPUTs+num3,num4);
+				if(line.substr(line.find(",")+1,2)=="or") ORs[num1].out->connect(ORs+num3,num4);
+				if(line.substr(line.find(",")+1,3)=="xor") ORs[num1].out->connect(XORs+num3,num4);
+				if(line.substr(line.find(",")+1,3)=="not") ORs[num1].out->connect(NOTs+num3,num4);
 			}
 			if(line.substr(5,3)=="xor"){
-				if(line.substr(line.find(",")+1,3)=="and") XORs[num1].out->connect(ANDs+num2,num3);
-				if(line.substr(line.find(",")+1,6)=="output") XORs[num1].out->connect(OUTPUTs+num2,num3);
-				if(line.substr(line.find(",")+1,2)=="or") XORs[num1].out->connect(ORs+num2,num3);
-				if(line.substr(line.find(",")+1,3)=="xor") XORs[num1].out->connect(XORs+num2,num3);
-				if(line.substr(line.find(",")+1,3)=="not") XORs[num1].out->connect(NOTs+num2,num3);
+				if(line.substr(line.find(",")+1,3)=="and") XORs[num1].out->connect(ANDs+num3,num4);
+				if(line.substr(line.find(",")+1,6)=="output") XORs[num1].out->connect(OUTPUTs+num3,num4);
+				if(line.substr(line.find(",")+1,2)=="or") XORs[num1].out->connect(ORs+num3,num4);
+				if(line.substr(line.find(",")+1,3)=="xor") XORs[num1].out->connect(XORs+num3,num4);
+				if(line.substr(line.find(",")+1,3)=="not") XORs[num1].out->connect(NOTs+num3,num4);
 			}
 			if(line.substr(5,3)=="not"){
-				if(line.substr(line.find(",")+1,3)=="and") NOTs[num1].out->connect(ANDs+num2,num3);
-				if(line.substr(line.find(",")+1,6)=="output") NOTs[num1].out->connect(OUTPUTs+num2,num3);
-				if(line.substr(line.find(",")+1,2)=="or") NOTs[num1].out->connect(ORs+num2,num3);
-				if(line.substr(line.find(",")+1,3)=="xor") NOTs[num1].out->connect(XORs+num2,num3);
-				if(line.substr(line.find(",")+1,3)=="not") NOTs[num1].out->connect(NOTs+num2,num3);
+				if(line.substr(line.find(",")+1,3)=="and") NOTs[num1].out->connect(ANDs+num3,num4);
+				if(line.substr(line.find(",")+1,6)=="output") NOTs[num1].out->connect(OUTPUTs+num3,num4);
+				if(line.substr(line.find(",")+1,2)=="or") NOTs[num1].out->connect(ORs+num3,num4);
+				if(line.substr(line.find(",")+1,3)=="xor") NOTs[num1].out->connect(XORs+num3,num4);
+				if(line.substr(line.find(",")+1,3)=="not") NOTs[num1].out->connect(NOTs+num3,num4);
 			}
 		}
 	}
