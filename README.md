@@ -57,3 +57,8 @@
 #### Beta0.7.2 update
 
  Changed headers from .h back to .hpp
+
+ Added one parameter, in order to perform harder functions. This parameter can input all numbers. Change to the last parameter. It can now inwrite all numbers too. 
+ 
+ Former lcl language example: CNCT input[0],output[0][0];
+ New lcl language example: CNCT input[0][0],output[0][0];
