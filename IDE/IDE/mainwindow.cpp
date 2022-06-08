@@ -10,6 +10,17 @@ MainWindow::MainWindow(QWidget *parent):QMainWindow(parent)
     setupGUI();
 }
 
+void MainWindow::setFileName(char *fn)
+{
+    fileName=QString::fromStdString(std::string(fn));
+    QFile file(fileName);
+    if(file.open(QFile::ReadOnly | QFile::Text))
+    {
+        editor->setPlainText(file.readAll());
+    }
+    setWindowTitle("LCL IDE - "+fileName);
+}
+
 void MainWindow::compileFile()
 {
     QProcess process;
@@ -21,7 +32,7 @@ void MainWindow::compileFile()
 }
 void MainWindow::runFile()
 {
-    system(("start E:\\GitHub\\Logisim-Connection-Language\\IDE\\build-IDE-Desktop_Qt_5_12_9_MinGW_64_bit-Release\\release\\logisim-win-2.7.1.exe \""+(((fileName.toStdString()).substr(0,(fileName.toStdString()).find_last_of('.')))+".circ")).c_str());
+    system(("start .\\logisim-win-2.7.1.exe \""+(((fileName.toStdString()).substr(0,(fileName.toStdString()).find_last_of('.')))+".circ")).c_str());
 }
 void MainWindow::compileAndRunFile()
 {
@@ -35,7 +46,7 @@ void MainWindow::compileAndRunFile()
         QMessageBox::warning(this,tr("Compilation Error"),Result);
         return;
     }
-    system(("start E:\\GitHub\\Logisim-Connection-Language\\IDE\\build-IDE-Desktop_Qt_5_12_9_MinGW_64_bit-Release\\release\\logisim-win-2.7.1.exe \""+(((fileName.toStdString()).substr(0,(fileName.toStdString()).find_last_of('.')))+".circ")).c_str());
+    system(("start .\\logisim-win-2.7.1.exe \""+(((fileName.toStdString()).substr(0,(fileName.toStdString()).find_last_of('.')))+".circ")).c_str());
 }
 void MainWindow::newFile()
 {
@@ -44,9 +55,8 @@ void MainWindow::newFile()
     setWindowTitle("LCL IDE - Untitled");
 }
 
-void MainWindow::openFile(const QString &path)
+void MainWindow::openFile()
 {
-    fileName=path;
     if(fileName.isEmpty())
     {
         fileName=QFileDialog::getOpenFileName(this,tr("Open File"),"","LCL Files(*.lcl)");

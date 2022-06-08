@@ -13,8 +13,9 @@ class MainWindow:public QMainWindow
 {
     Q_OBJECT
     public:
-        MainWindow(QWidget *parent = 0);
+        MainWindow(QWidget *parent=0);
         void setupGUI();
+        void setFileName(char *fn);
         QString fileName;
         QTextEdit *editor;
         Highlighter *highlighter;
@@ -27,7 +28,7 @@ class MainWindow:public QMainWindow
         QAction *compileAction;
     public slots:
         void newFile();
-        void openFile(const QString &path = QString());
+        void openFile();
         void saveFile();
         void saveAs();
         void compileFile();
