@@ -23,8 +23,9 @@ void MainWindow::setFileName(char *fn)
 
 void MainWindow::compileFile()
 {
+    qDebug()<<QCoreApplication::applicationDirPath();
     QProcess process;
-    int result=process.execute(".\\compiler.exe \""+fileName+"\"");
+    int result=process.execute(QCoreApplication::applicationDirPath()+"/compiler.exe \""+fileName+"\"");
     QString Result;
     Result=QString::fromStdString(std::string((result==0)?"Successfully Compiled.":("Compilation Error\nCode:"+std::to_string(result))));
     QMessageBox::information(this,tr("Compilation result"),Result);
@@ -32,21 +33,21 @@ void MainWindow::compileFile()
 }
 void MainWindow::runFile()
 {
-    system(("start .\\logisim-win-2.7.1.exe \""+(((fileName.toStdString()).substr(0,(fileName.toStdString()).find_last_of('.')))+".circ")).c_str());
+    system(("start "+QCoreApplication::applicationDirPath().toStdString()+"/logisim-win-2.7.1.exe \""+(((fileName.toStdString()).substr(0,(fileName.toStdString()).find_last_of('.')))+"\".circ")).c_str());
 }
 void MainWindow::compileAndRunFile()
 {
     QProcess process;
     QString Result;
     int result;
-    result=process.execute(".\\compiler.exe \""+fileName+"\"");
+    result=process.execute(QCoreApplication::applicationDirPath()+"/compiler.exe \""+fileName+"\"");
     if(result!=0)
     {
         Result=QString::fromStdString("Compilation Error\nCode:"+std::to_string(result));
         QMessageBox::warning(this,tr("Compilation Error"),Result);
         return;
     }
-    system(("start .\\logisim-win-2.7.1.exe \""+(((fileName.toStdString()).substr(0,(fileName.toStdString()).find_last_of('.')))+".circ")).c_str());
+    system(("start "+QCoreApplication::applicationDirPath().toStdString()+"/logisim-win-2.7.1.exe \""+(((fileName.toStdString()).substr(0,(fileName.toStdString()).find_last_of('.')))+".circ")).c_str());
 }
 void MainWindow::newFile()
 {

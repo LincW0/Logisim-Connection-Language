@@ -81,3 +81,7 @@
  Fixed the bug of unable to open a file by clicking on it.
 
  Fixed the bug of unable to run (or compile & run) programs.
+
+#### Beta1.0.2 update
+
+ Fixed the bug of not able to compile or run when working in a different directory.
