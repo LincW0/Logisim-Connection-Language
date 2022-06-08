@@ -52,7 +52,17 @@
 
 #### Beta0.7.1 update
 
- Changed LCL Format. Preparing for Beta2.0
+ Changed LCL Format.
+
+ Added one parameter in order to perform more complicated functions.
+
+ Example:
+
+ Former: CNCT input[0],output[0][0];
+
+ New: CNCT input[0][0],output[0][0];
+
+ This is a preparation for Beta2.0
 
  Also changed headers from .hpp to .h
 
