@@ -2,15 +2,17 @@
 
  A better way of describing Logisim connections.
 
- Current version: Beta0.7.2
+ Current version: Beta1.0
+
+ Now supporting IDE made for LCL!
 
  Notice: This version is not compatible with code made for versions lower than Beta0.7.1
 
- Compile /Compiler/compiler.cpp with gcc.
+ For the command line compiler, compile /Compiler/compiler.cpp with gcc.
 
- This does not support the "IMPT" feature addressed in /Formats/LCLFormat.txt (This will be supported in Beta1.0)
+ For the graphic IDE, open /IDE/IDE/IDE.pro with Qt Creator.
 
- Output components are now fully organized.
+ This does not support the "IMPT" feature addressed in /Formats/LCLFormat.txt (This will be supported in Beta2.0)
 
 ## Update log
 
@@ -50,10 +52,16 @@
 
 #### Beta0.7.1 update
 
- Changed LCL Format. Preparing for Beta1.0
+ Changed LCL Format. Preparing for Beta2.0
 
  Also changed headers from .hpp to .h
 
 #### Beta0.7.2 update
 
  Changed headers from .h back to .hpp
+
+### Beta1.0 update
+
+ Added a IDE made for LCL.
+
+ The IDE is a Qt application.

@@ -1,3 +1,10 @@
 .vscode/**
 .vscode
 Compiler/compiler.exe
+IDE/build-IDE-Desktop_Qt_5_12_9_MinGW_64_bit-Release/**
+IDE/build-IDE-Desktop_Qt_5_12_9_MinGW_64_bit-Release
+IDE/build-IDE-Desktop_Qt_5_12_9_MinGW_64_bit-Debug/**
+IDE/build-IDE-Desktop_Qt_5_12_9_MinGW_64_bit-Debug
+IDE/IDE/compiler.exe
+Save/**
+Save
