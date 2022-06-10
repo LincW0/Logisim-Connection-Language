@@ -8,7 +8,7 @@
 
  Notice: This version is not compatible with code made for versions lower than Beta0.7.1
 
- Bug notice: Any IDE version before Beta1.3 contain bugs.
+ Bug notice: Any IDE version before Beta1.3 contains bugs.
 
  For the command line compiler, compile /Compiler/compiler.cpp with gcc.
 
@@ -106,6 +106,6 @@
 
  Actually fixed the bug of not able to compile or run when working in a different directory.
 
- Bug notice: Any IDE version before Beta1.3 contain bugs.
+ Bug notice: Any IDE version before Beta1.3 contains bugs.
 
  Removed Herobrine.
