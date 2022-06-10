@@ -170,10 +170,22 @@ void parseLCL()
 		}
 		else if(line[0]=='I'&&line[1]=='M'&&line[2]=='P'&&line[3]=='T'&&line[4]==' ')
 		{
-			//IMPT "C:/xxx.lcl",xxx,2;
-			string filename; //获取文件名
-			freopen(filename.c_str(),"r",stdin);
-			
+			//IMPT "C:\xxx.lcl",xxx,2;
+			string filename="";
+			string id_="";
+			int num_1;
+			for(int i = line.find("\"",3)+1; i<=line.find("\"",line.find("\"",3))-1; i++){
+				filename+=line[i];
+			}
+			int sum1=0;
+			for(int i = line.find(",",line.find(",",line.find("\"",line.find("\"",3))-1))+1; i<=line.find(";",4)-1; i++){
+				sum1=sum1*10+int(line[i])-48;
+			}
+			num_1=sum1;
+			for(int i = line.find(",",3)+1; i<=line.find(",",line.find(",",line.find("\"",line.find("\"",3))-1))-1; i++){
+				id_+=line[i];
+			}
+			cerr<<filename<<" "<<id_<<" "<<num_1;
 		}
 	}
 }

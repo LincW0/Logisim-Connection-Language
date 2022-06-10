@@ -30,3 +30,5 @@ CNCT and[1][0],or[0][0];
 CNCT and[2][0],or[0][1];
 
 CNCT or[0][0],output[2][0];
+
+IMPT "E:\GitHub\Logisim-Connection-Language\Test\03.lcl",x03,5;
