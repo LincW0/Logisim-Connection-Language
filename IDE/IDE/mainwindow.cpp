@@ -23,7 +23,7 @@ void MainWindow::setFileName(char *fn)
 
 void MainWindow::compileFile()
 {
-    qDebug()<<QCoreApplication::applicationDirPath();
+    //qDebug()<<QCoreApplication::applicationDirPath();
     QProcess process;
     int result=process.execute(QCoreApplication::applicationDirPath()+"/compiler.exe \""+fileName+"\"");
     QString Result;
@@ -105,6 +105,7 @@ void MainWindow::saveAs()
 }
 void MainWindow::setupGUI()
 {
+    setWindowIcon(QIcon(QCoreApplication::applicationDirPath()+"/IDE-Icon.png"));
     fileName.clear();
     this->setStyleSheet("QWidget{background:#1e1e1e;color:#ffffff;}");
     menuBar()->setStyleSheet("QMenuBar{background:#323234;color:#ffffff;}");

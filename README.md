@@ -2,15 +2,19 @@
 
  A better way of describing Logisim connections.
 
- Current version: Beta1.0
+ Current version: Beta1.3
 
- Now supporting IDE made for LCL!
+ Now supporting IDE made for LCL! (Now released!)
 
  Notice: This version is not compatible with code made for versions lower than Beta0.7.1
+
+ Bug notice: Any IDE version before Beta1.3 contain bugs.
 
  For the command line compiler, compile /Compiler/compiler.cpp with gcc.
 
  For the graphic IDE, open /IDE/IDE/IDE.pro with Qt Creator.
+
+ Both are now available on the "release" link on the right.
 
  This does not support the "IMPT" feature addressed in /Formats/LCLFormat.txt (This will be supported in Beta2.0)
 
@@ -85,3 +89,23 @@
 #### Beta1.0.2 update
 
  Fixed the bug of not able to compile or run when working in a different directory.
+
+#### Beta1.1 update
+
+ First official release of the IDE.
+
+#### Beta1.2 update
+
+ Added icon & released on github.
+
+#### Beta1.3 update
+
+ Removed setup.exe.
+
+ Changed releasing format to zip.
+
+ Actually fixed the bug of not able to compile or run when working in a different directory.
+
+ Bug notice: Any IDE version before Beta1.3 contain bugs.
+
+ Removed Herobrine.
