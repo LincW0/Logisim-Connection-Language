@@ -168,6 +168,13 @@ void parseLCL()
 				if(line.substr(line.find(",")+1,3)=="not") NOTs[num1].out->connect(NOTs+num3,num4);
 			}
 		}
+		else if(line[0]=='I'&&line[1]=='M'&&line[2]=='P'&&line[3]=='T'&&line[4]==' ')
+		{
+			//IMPT "C:/xxx.lcl",xxx,2;
+			string filename; //获取文件名
+			freopen(filename.c_str(),"r",stdin);
+			
+		}
 	}
 }
 void constructRelativePosition()
