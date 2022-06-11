@@ -10,7 +10,7 @@
 
  Bug notice: Any IDE version before Beta1.3 contains bugs.
 
- For the command line compiler, compile /Compiler/compiler.cpp with gcc.
+ For the command line compiler, compile /Compiler/compiler.cpp with gcc. // We are now developing Beta2.0, so the compiler.cpp isn't exactly what you would expect. For now, just click the "release" link to get the compiler.
 
  For the graphic IDE, open /IDE/IDE/IDE.pro with Qt Creator.
 
