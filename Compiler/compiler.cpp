@@ -174,18 +174,18 @@ void parseLCL()
 			string filename="";
 			string id_="";
 			int num_1;
-			for(int i = line.find("\"",3)+1; i<=line.find("\"",line.find("\"",3))-1; i++){
+			for(int i = line.find("\"",3)+1; i<=line.find("\"",line.find("\"",3)+1)-1; i++){
 				filename+=line[i];
 			}
 			int sum1=0;
-			for(int i = line.find(",",line.find(",",line.find("\"",line.find("\"",3))-1))+1; i<=line.find(";",4)-1; i++){
+			for(int i = line.find(",",line.find(",",line.find("\"",line.find("\"",3)+1)-1)+1)+1; i<=line.find(";",4)-1; i++){
 				sum1=sum1*10+int(line[i])-48;
 			}
 			num_1=sum1;
-			for(int i = line.find(",",3)+1; i<=line.find(",",line.find(",",line.find("\"",line.find("\"",3))-1))-1; i++){
+			for(int i = line.find(",",line.find("\"",line.find("\"",3)+1)-1)+1; i<=line.find(",",line.find(",",line.find("\"",line.find("\"",3)+1)-1)+1)-1; i++){
 				id_+=line[i];
 			}
-			cerr<<filename<<" "<<id_<<" "<<num_1;
+			//cout<<filename<<" "<<id_<<" "<<num_1;
 		}
 	}
 }
