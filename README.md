@@ -2,7 +2,7 @@
 
  A better way of describing Logisim connections.
 
- Current version: Beta1.3
+ Current version: Beta1.4
 
  Now supporting IDE made for LCL! (Now released!)
 
@@ -90,15 +90,15 @@
 
  Fixed the bug of not able to compile or run when working in a different directory.
 
-#### Beta1.1 update
+### Beta1.1 update
 
  First official release of the IDE.
 
-#### Beta1.2 update
+### Beta1.2 update
 
  Added icon & released on github.
 
-#### Beta1.3 update
+### Beta1.3 update
 
  Removed setup.exe.
 
@@ -109,3 +109,11 @@
  Bug notice: Any IDE version before Beta1.3 contains bugs.
 
  Removed Herobrine.
+
+### Beta1.4 update
+
+ Removed the following keywords:
+
+ "AND" "OR" "XOR" "NOT" "IN" "OUT"
+
+ This is compatible with versions before Beta1.4, but anything that start with these keywords will be reconized as comment.

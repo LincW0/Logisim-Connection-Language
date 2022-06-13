@@ -13,12 +13,12 @@ Connection XORs[1001];
 Connection NOTs[1001];
 Connection OUTPUTs[1001];
 Node INPUTs[1001];
-int number_of_input,number_of_input1;
-int number_of_not,number_of_not1;
-int number_of_or,number_of_or1;
-int number_of_xor,number_of_xor1;
-int number_of_and,number_of_and1;
-int number_of_output,number_of_output1;
+int number_of_input;
+int number_of_not;
+int number_of_or;
+int number_of_xor;
+int number_of_and;
+int number_of_output;
 int taken,xend;
 void parseLCL();
 void constructRelativePosition();
@@ -56,55 +56,7 @@ void parseLCL()
 	number_of_not=0;
 	string line="";
 	while(getline(cin,line)){
-		if(line[0]=='I'&&line[1]=='N'&&line[2]==' '){
-			int bits=line.length()-4;
-			int sum=0;
-			for(int i = 3; i<=bits+2; i++){
-				sum=sum*10+int(line[i])-48;
-			}
-			number_of_input1=sum;
-		}
-		else if(line[0]=='O'&&line[1]=='U'&&line[2]=='T'&&line[3]==' '){
-			int bits=line.length()-5;
-			int sum=0;
-			for(int i = 4; i<=bits+3; i++){
-				sum=sum*10+int(line[i])-48;
-			}
-			number_of_output1=sum;
-		}
-		else if(line[0]=='O'&&line[1]=='R'&&line[2]==' '){
-			int bits=line.length()-4;
-			int sum=0;
-			for(int i = 3; i<=bits+2; i++){
-				sum=sum*10+int(line[i])-48;
-			}
-			number_of_or1=sum;
-		}
-		else if(line[0]=='X'&&line[1]=='O'&&line[2]=='R'&&line[3]==' '){
-			int bits=line.length()-5;
-			int sum=0;
-			for(int i = 4; i<=bits+3; i++){
-				sum=sum*10+int(line[i])-48;
-			}
-			number_of_xor1=sum;
-		}
-		else if(line[0]=='A'&&line[1]=='N'&&line[2]=='D'&&line[3]==' '){
-			int bits=line.length()-5;
-			int sum=0;
-			for(int i = 4; i<=bits+3; i++){
-				sum=sum*10+int(line[i])-48;
-			}
-			number_of_and1=sum;
-		}
-		else if(line[0]=='N'&&line[1]=='O'&&line[2]=='T'&&line[3]==' '){
-			int bits=line.length()-5;
-			int sum=0;
-			for(int i = 4; i<=bits+3; i++){
-				sum=sum*10+int(line[i])-48;
-			}
-			number_of_not1=sum;
-		}
-		else if(line[0]=='C'&&line[1]=='N'&&line[2]=='C'&&line[3]=='T'&&line[4]==' '){
+		if(line[0]=='C'&&line[1]=='N'&&line[2]=='C'&&line[3]=='T'&&line[4]==' '){
 			int num1;
 			int num2;//importing
 			int num3;
@@ -117,8 +69,6 @@ void parseLCL()
 			int bits2=line.find("]",line.find("]")+1)-line.find("[",line.find("]"))-1;
 			int bits3=line.find("]",line.find(","))-line.find("[",line.find(","))-1;
 			int bits4=line.find("]",line.find("]",line.find(","))+1)-line.find("[",line.find("]",line.find(",")))-1;
-			
-			//CNCT input[0][0],output[0][0];
 			
 			int sum1=0;
 			for(int i = line.find("[",4)+1; i<=bits1+line.find("[",4); i++){
@@ -254,9 +204,8 @@ void parseLCL()
 					number_of_not=tmp;
 				}
 			}
-			//cerr<<num1<<" "<<num3<<" "<<num4;
 			if(line.substr(5,5)=="input"){
-				if(line.substr(line.find(",")+1,3)=="input") INPUTs[num1].connect(ANDs+num3,num4);
+				if(line.substr(line.find(",")+1,3)=="and") INPUTs[num1].connect(ANDs+num3,num4);
 				if(line.substr(line.find(",")+1,6)=="output") INPUTs[num1].connect(OUTPUTs+num3,num4);
 				if(line.substr(line.find(",")+1,2)=="or") INPUTs[num1].connect(ORs+num3,num4);
 				if(line.substr(line.find(",")+1,3)=="xor") INPUTs[num1].connect(XORs+num3,num4);
@@ -302,29 +251,15 @@ void parseLCL()
 			for(int i = line.find(",",line.find("\"",line.find("\"",3)+1)-1)+1; i<=line.find(";")-1; i++){
 				id_+=line[i];
 			}
-//			cout<<filename<<" "<<id_;
 		}
 	}
 }
 void constructRelativePosition()
 {
-	/*cerr<<number_of_and<<endl;
-	cerr<<number_of_output<<endl;
-	cerr<<number_of_input<<endl;
-	cerr<<number_of_xor<<endl;
-	cerr<<number_of_or<<endl;
-	cerr<<number_of_not<<endl;
-	cerr<<number_of_and1<<endl;
-	cerr<<number_of_output1<<endl;
-	cerr<<number_of_input1<<endl;
-	cerr<<number_of_xor1<<endl;
-	cerr<<number_of_or1<<endl;
-	cerr<<number_of_not1<<endl;*/
 	occupied=0;
 	taken=0;
 	for(int i=0;i<number_of_input;++i)
 	{
-		//cout<<taken<<endl;
 		INPUTs[i].setYPos(taken);
 		taken++;
 	}
@@ -348,10 +283,6 @@ void constructRelativePosition()
 		NOTs[i].out->setYPos(taken);
 		taken++;
 	}
-	/*cout<<XORs[0].in[0]<<endl;
-	cout<<&INPUTs[0]<<endl;
-	cout<<XORs[0].in[1]<<endl;
-	cout<<&INPUTs[1]<<endl;*/
 	for(int i=0;i<number_of_input;++i)
 	{
 		for(int j=0;j<1001;++j)
@@ -421,37 +352,22 @@ void constructRelativePosition()
 void constructCIRC()
 {
 	fundamentals::init();
-	//cout<<number_of_input<<endl;
-	//cerr<<"-----"<<endl;
 	for(int i=0;i<number_of_input;++i)
 	{
 		fundamentals::IO(false,2,1+i*2);
 		fundamentals::wire(true,2,1+i*2,xend*2-1);
 	}
-	//cerr<<"-----"<<endl;
 	for(int i=0;i<number_of_and;++i)
 	{
-		//cerr<<"##"<<endl;
 		fundamentals::wire(true,2,1+ANDs[i].out->ypos*2,xend*2-1);
-		//cerr<<"##"<<endl;
 		fundamentals::wire(false,3+ANDs[i].xpos*2,1+ANDs[i].in[0]->ypos*2,taken*2-ANDs[i].in[0]->ypos*2);
-		//cerr<<"##"<<endl;
-		//cerr<<ANDs[i].in[0]<<endl;
-		//cerr<<"##"<<endl;
 		fundamentals::wire(false,5+ANDs[i].xpos*2,1+ANDs[i].in[1]->ypos*2,taken*2-ANDs[i].in[1]->ypos*2+2);
-		//cerr<<"##"<<endl;
 		fundamentals::wire(false,10+ANDs[i].xpos*2,1+ANDs[i].out->ypos*2,taken*2-ANDs[i].out->ypos*2+1);
-		//cerr<<"##"<<endl;
 		fundamentals::AND(9+ANDs[i].xpos*2,taken*2+2);
-		//cerr<<"##"<<endl;
 		fundamentals::wire(true,3+ANDs[i].xpos*2,taken*2+1,3);
-		//cerr<<"##"<<endl;
 		fundamentals::wire(true,5+ANDs[i].xpos*2,taken*2+3,1);
-		//cerr<<"##"<<endl;
 		fundamentals::wire(true,9+ANDs[i].xpos*2,taken*2+2,1);
-		//cerr<<"##"<<endl;
 	}
-	//cerr<<"-----"<<endl;
 	for(int i=0;i<number_of_or;++i)
 	{
 		fundamentals::wire(true,2,1+ORs[i].out->ypos*2,xend*2-1);
@@ -463,11 +379,8 @@ void constructCIRC()
 		fundamentals::wire(true,5+ORs[i].xpos*2,taken*2+3,1);
 		fundamentals::wire(true,9+ORs[i].xpos*2,taken*2+2,1);
 	}
-	//cout<<XORs[0].in[0]->ypos<<" "<<XORs[0].in[1]->ypos<<endl;
-	//cerr<<"-----"<<endl;
 	for(int i=0;i<number_of_xor;++i)
 	{
-		//cout<<XORs[i].in[0]->ypos<<" "<<XORs[i].in[1]->ypos<<endl;
 		fundamentals::wire(true,2,1+XORs[i].out->ypos*2,xend*2-1);
 		fundamentals::wire(false,3+XORs[i].xpos*2,1+XORs[i].in[0]->ypos*2,taken*2-XORs[i].in[0]->ypos*2);
 		fundamentals::wire(false,5+XORs[i].xpos*2,1+XORs[i].in[1]->ypos*2,taken*2-XORs[i].in[1]->ypos*2+2);
@@ -476,7 +389,6 @@ void constructCIRC()
 		fundamentals::wire(true,3+XORs[i].xpos*2,taken*2+1,3);
 		fundamentals::wire(true,5+XORs[i].xpos*2,taken*2+3,1);
 	}
-	//cerr<<"-----"<<endl;
 	for(int i=0;i<number_of_not;++i)
 	{
 		fundamentals::wire(true,2,1+NOTs[i].out->ypos*2,xend*2-1);
@@ -485,7 +397,6 @@ void constructCIRC()
 		fundamentals::NOT(8+NOTs[i].xpos*2,taken*2+1);
 		fundamentals::wire(true,3+NOTs[i].xpos*2,taken*2+1,3);
 	}
-	//cerr<<"-----"<<endl;
 	for(int i=0;i<number_of_output;++i)
 	{
 		fundamentals::wire(true,xend*2+1,OUTPUTs[i].in[0]->ypos*2+1,1+i);
@@ -493,6 +404,5 @@ void constructCIRC()
 		fundamentals::wire(true,xend*2+2+i,i*2+1,number_of_output-i);
 		fundamentals::IO(true,xend*2+2+number_of_output,i*2+1);
 	}
-	//cerr<<"-----"<<endl;
 	fundamentals::end();
 }
