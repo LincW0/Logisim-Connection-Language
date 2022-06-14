@@ -18,7 +18,7 @@
 
  Both are now available on the "release" link on the right.
 
- This does not support the "IMPT" feature addressed in /Formats/LCLFormat.txt (This will be supported in Beta2.0)
+ "IMPT" feature comming soon! (This will be supported in Beta2.0)
 
 ## Update log
 

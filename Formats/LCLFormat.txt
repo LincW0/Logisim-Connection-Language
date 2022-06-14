@@ -1,8 +1,8 @@
 LCL Format
-IN number_of_inputs; (identifier:input[n])
-OUT number_of_outputs; (identifier:output[n])
-NOT number_of_nots; (identifier:not[n])
-AND number_of_ands; (identifier:and[n])
-XOR number_of_xors; (identifier:xor[n])
-OR number_of_ors; (identifier:or[n])
+identifier of inputs:input[n]
+identifier of outputs:output[n]
+identifier of NOT gates:not[n]
+identifier of AND gates:and[n]
+identifier of XOR gates:xor[n]
+identifier of OR gates:or[n]
 CNCT (identifier of the component that's providing the bit)[which_output],(identifier of the component that's using the bit)[which_input];
