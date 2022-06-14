@@ -1,6 +1,6 @@
 .vscode/**
 .vscode
-Compiler/compiler.exe
+Compiler/C++/compiler.exe
 IDE/build-IDE-Desktop_Qt_5_12_9_MinGW_64_bit-Release/**
 IDE/build-IDE-Desktop_Qt_5_12_9_MinGW_64_bit-Release
 IDE/build-IDE-Desktop_Qt_5_12_9_MinGW_64_bit-Debug/**
@@ -11,3 +11,10 @@ Save
 IDE License.txt
 IDE/Build
 IDE/Build/**
+Compiler/C#/Compiler/bin
+Compiler/C#/Compiler/bin/**
+Compiler/C#/Compiler/obj
+Compiler/C#/Compiler/obj/**
+Compiler/C#/Compiler/.vs
+Compiler/C#/Compiler/.vs/**
+**/compiler.exe
