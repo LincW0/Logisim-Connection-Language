@@ -6,11 +6,13 @@
 
  Now supporting IDE made for LCL! (Now released!)
 
+ Notice: We are changing the command-line compiler code from C++ to C#.
+
  Notice: This version is not compatible with code made for versions lower than Beta0.7.1
 
  Bug notice: Any IDE version before Beta1.3 contains bugs.
 
- For the command line compiler, compile /Compiler/compiler.cpp with gcc.
+ For the command line compiler, compile /Compiler/C++/compiler.cpp with gcc.
 
  For the graphic IDE, open /IDE/IDE/IDE.pro with Qt Creator.
 
