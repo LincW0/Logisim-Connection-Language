@@ -17,14 +17,18 @@ namespace Circ
     {
         private string fileName; //The circ file name.
         private StreamWriter file; //The StreamWriter object for writing the file.
+        public int xOffset;
+        public int yOffset;
         /// <summary>
         /// The constructor of CircStream.
         /// </summary>
         /// <param name="f">The file name.</param>
         /// <exception cref="Exception">The exception occurs when unable to open the file.</exception>
-        public CircStream(string f)
+        public CircStream(string f, int xOffset = 0, int yOffset = 0)
         {
             fileName = f;
+            this.xOffset = xOffset;
+            this.yOffset = yOffset;
             try
             {
                 file = new StreamWriter(f, false); //Overwrites the file.
@@ -49,6 +53,8 @@ namespace Circ
         /// <param name="length">The length of the wire.</param>
         public void Wire(bool horizontal, int x, int y, int length)
         {
+            x += xOffset;
+            y += yOffset;
             if (horizontal) //Split the two conditions
             {
                 //This is coded according to the circ format.
@@ -59,6 +65,24 @@ namespace Circ
                 //This is coded according to the circ format.
                 file.WriteLine("    <wire from=\"(" + x * 10 + "," + y * 10 + ")\" to=\"(" + x * 10 + "," + (y * 10 + length * 10) + ")\"/>");
             }
+        }
+
+        public void WireHorizontally(int y, int x1, int x2)
+        {
+            x1 += xOffset;
+            x2 += xOffset;
+            y += yOffset;
+            //This is coded according to the circ format.
+            file.WriteLine("    <wire from=\"(" + x1 * 10 + "," + y * 10 + ")\" to=\"(" + (x2 * 10) + "," + y * 10 + ")\"/>");
+        }
+
+        public void WireVertically(int x, int y1, int y2)
+        {
+            x += xOffset;
+            y1 += yOffset;
+            y2 += yOffset;
+            //This is coded according to the circ format.
+            file.WriteLine("    <wire from=\"(" + x * 10 + "," + y1 * 10 + ")\" to=\"(" + (x * 10) + "," + y2 * 10 + ")\"/>");
         }
         /// <summary>
         /// <para>Place a Input/Output component.</para>
@@ -71,6 +95,8 @@ namespace Circ
         /// <param name="y">The y coordinate of the point that connects wires.</param>
         public void IO(bool output, int x, int y)
         {
+            x += xOffset;
+            y += yOffset;
             //This is coded according to the circ format.
             file.WriteLine("    <comp lib=\"0\" loc=\"(" + x * 10 + "," + y * 10 + ")\" name=\"Pin\">");
             file.WriteLine("      <a name=\"output\" val=\"" + (output ? "true" : "false") + "\"/>");
@@ -92,6 +118,8 @@ namespace Circ
         /// </param>
         public void NOT(int x, int y)
         {
+            x += xOffset;
+            y += yOffset;
             file.WriteLine("    <comp lib=\"1\" loc=\"(" + x * 10 + "," + y * 10 + ")\" name=\"NOT Gate\">");
             file.WriteLine("      <a name=\"size\" val=\"20\"/>");
             file.WriteLine("    </comp>");
@@ -110,6 +138,8 @@ namespace Circ
         /// </param>
         public void AND(int x, int y)
         {
+            x += xOffset;
+            y += yOffset;
             file.WriteLine("    <comp lib=\"1\" loc=\"(" + x * 10 + "," + y * 10 + ")\" name=\"AND Gate\">");
             file.WriteLine("      <a name=\"size\" val=\"30\"/>");
             file.WriteLine("      <a name=\"inputs\" val=\"2\"/>");
@@ -129,6 +159,8 @@ namespace Circ
         /// </param>
         public void XOR(int x, int y)
         {
+            x += xOffset;
+            y += yOffset;
             file.WriteLine("    <comp lib=\"1\" loc=\"(" + x * 10 + "," + y * 10 + ")\" name=\"XOR Gate\">");
             file.WriteLine("      <a name=\"size\" val=\"30\"/>");
             file.WriteLine("      <a name=\"inputs\" val=\"2\"/>");
@@ -148,6 +180,8 @@ namespace Circ
         /// </param>
         public void OR(int x, int y)
         {
+            x += xOffset;
+            y += yOffset;
             file.WriteLine("    <comp lib=\"1\" loc=\"(" + x * 10 + "," + y * 10 + ")\" name=\"OR Gate\">");
             file.WriteLine("      <a name=\"size\" val=\"30\"/>");
             file.WriteLine("      <a name=\"inputs\" val=\"2\"/>");

@@ -2,23 +2,27 @@
 
  A better way of describing Logisim connections.
 
- Current version: Beta1.4
+ Current version: Beta2.0
 
- Now supporting IDE made for LCL! (Now released!)
+ The command-line compiler is using C# now!
 
- Notice: We are changing the command-line compiler code from C++ to C#.
+ Support IDE made for LCL.
+
+ Notice: The compilation result is slightly different from Beta1.4, but it's better!
 
  Notice: This version is not compatible with code made for versions lower than Beta0.7.1
 
+ Notice: The IDE is still using Beta0.7.2 compiler, so you will need to download compiler.exe for the lastest version.
+
  Bug notice: Any IDE version before Beta1.3 contains bugs.
 
- For the command line compiler, compile /Compiler/C++/compiler.cpp with gcc.
+ For the command line compiler, open /Compiler/C#/Compiler.sln with Visual Studio.
 
  For the graphic IDE, open /IDE/IDE/IDE.pro with Qt Creator.
 
  Both are now available on the "release" link on the right.
 
- "IMPT" feature comming soon! (This will be supported in Beta2.0)
+ "IMPT" feature comming soon! (This will be supported in Beta3.0)
 
 ## Update log
 
@@ -119,3 +123,16 @@
  "AND" "OR" "XOR" "NOT" "IN" "OUT"
 
  This is compatible with versions before Beta1.4, but anything that start with these keywords will be reconized as comment.
+
+### Beta2.0 update
+
+ Rewrote the command-line compiler code in C#.
+
+ This has several advantages:
+
+- Better Code Structures.
+- More documents/comments.
+- Easy to modify.
+- Added exception handling.
+
+ Also added syntax error detecting. (Only a few of the syntax errors, though)
