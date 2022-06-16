@@ -12,6 +12,11 @@ namespace Circ
     /// Created time: 16:43
     /// Author: ItsHealingSpell
     /// </para>
+    /// <para>
+    /// Modified date: 2022/6/16
+    /// Modified time: 16:47
+    /// Modifier: ItsHealingSpell
+    /// <para>
     /// </summary>
     class CircStream
     {
