@@ -1,7 +1,6 @@
 ﻿using Utils;
 class Program
 {
-    private static string? LCLFileName; //The LCL file name is used globally.
     private static List<Structure.Node>? Inputs;
     private static List<Structure.Component>? Outputs;
     private static List<Structure.Component>? ANDs;
@@ -10,23 +9,18 @@ class Program
     private static List<Structure.Component>? NOTs;
     static void Main(string[] args)
     {
-        //if (args.Length == 0) return; //Exits if not given enough arguments
-        //LCLFileName = args[0]; //Read the first argument as the file name.
-        LCLFileName = "E:\\GitHub\\Logisim-Connection-Language\\Test\\04.lcl"; //For debugging
+        if (args.Length == 0) return; //Exits if not given enough arguments
+        string? LCLFileName = args[0]; //Read the first argument as the file name.
+        //string? LCLFileName = "E:\\GitHub\\Logisim-Connection-Language\\Test\\04.lcl"; //For debugging
 
         //Parse the LCL.
-        bool parseSuccess=ParseLCL();
+        Initialize();
+        bool parseSuccess=ParseLCL(LCLFileName);
         if (!parseSuccess) return; //Exits if its unable to parse the file.
 
-        constructCirc();
+        constructCirc(LCLFileName);
     }
-    /// <summary>
-    /// Parses the LCL source code.
-    /// </summary>
-    /// <returns>
-    /// Returns false if an error occurred, vice versa.
-    /// </returns>
-    private static bool ParseLCL()
+    private static void Initialize()
     {
         Inputs = new List<Structure.Node>();
         ANDs = new List<Structure.Component>();
@@ -37,12 +31,20 @@ class Program
 
         Structure.Node.InitializeNodes();
         Structure.Component.InitializeComponents();
-
+    }
+    /// <summary>
+    /// Parses the LCL source code.
+    /// </summary>
+    /// <returns>
+    /// Returns false if an error occurred, vice versa.
+    /// </returns>
+    private static bool ParseLCL(string fileName)
+    {
         bool finishedImporting = false; //Indicates whether the importing is done.
         int curLine = 1; //Indicates the current line index.
         try //Catches the exception caused by "StreamReader" and the other exceptions.
         {
-            using (StreamReader sr = new StreamReader(LCLFileName)) //Uses StreamReader to Read
+            using (StreamReader sr = new StreamReader(fileName)) //Uses StreamReader to Read
             {
                 while (!sr.EndOfStream) //Keep on reading until the end of file.
                 {
@@ -199,19 +201,19 @@ class Program
                             catch (ArgumentNullException err)
                             {
                                 //Didn't find the parameter.
-                                Console.WriteLine("Syntax Error: Line " + curLine + ", expected an parameter.\n" + err.Message);
+                                Console.WriteLine("Syntax Error: File "+ fileName + ", Line " + curLine + ", expected an parameter.\n" + err.Message);
                                 return false;
                             }
                             catch (FormatException err)
                             {
                                 //Invalid parameter.
-                                Console.WriteLine("Syntax Error: Line " + curLine + ", invalid parameter.\n" + err.Message);
+                                Console.WriteLine("Syntax Error: File " + fileName + ", Line " + curLine + ", invalid parameter.\n" + err.Message);
                                 return false;
                             }
                             catch (OverflowException err)
                             {
                                 //Parameter out of range.
-                                Console.WriteLine("Syntax Error: Line " + curLine + ", parameter out of range.\n" + err.Message);
+                                Console.WriteLine("Syntax Error: File " + fileName + ", Line " + curLine + ", parameter out of range.\n" + err.Message);
                                 return false;
                             }
                         }
@@ -219,13 +221,13 @@ class Program
                     }
                     catch(IOException err)
                     {
-                        Console.WriteLine("Error: IOError occurred while reading the source file");
+                        Console.WriteLine("Error: IOError occurred while reading file: " + fileName);
                         Console.Write(err.Message);
                         return false;
                     }
                     catch(OutOfMemoryException err)
                     {
-                        Console.WriteLine("Error: Out of memory while reading the source file");
+                        Console.WriteLine("Error: Out of memory while reading file: " + fileName);
                         Console.Write(err.Message);
                         return false;
                     }
@@ -235,13 +237,13 @@ class Program
         }
         catch (IOException err)
         {
-            Console.WriteLine("Error: IOError occurred while opening the source file");
+            Console.WriteLine("Error: IOError occurred while opening file: " + fileName);
             Console.Write(err.Message);
             return false;
         }
         catch (Exception err)
         {
-            Console.WriteLine("Error: Error occurred while accessing the source file");
+            Console.WriteLine("Error: Error occurred while accessing file: " + fileName);
             Console.Write(err.Message);
             return false;
         }
@@ -263,11 +265,11 @@ class Program
 
     }
 
-    private static bool constructCirc()
+    private static bool constructCirc(string fileName)
     {
         try
         {
-            Circ.CircStream file = new Circ.CircStream(Tools.StripExtension(LCLFileName) + ".circ", Inputs.Count+1, 0);
+            Circ.CircStream file = new Circ.CircStream(Tools.StripExtension(fileName) + ".circ", Inputs.Count+1, 0);
             int InputIndex = 0;
             foreach (Structure.Node Input in Inputs)
             {

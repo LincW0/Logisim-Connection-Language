@@ -22,7 +22,7 @@
 
  Both are now available on the "release" link on the right.
 
- "IMPT" feature comming soon! (This will be supported in Beta3.0)
+ "IMPT" feature comming soon! (This will be supported in Stable3.0)
 
 ## Update log
 
@@ -136,3 +136,9 @@
 - Added exception handling.
 
  Also added syntax error detecting. (Only a few of the syntax errors, though)
+
+#### Beta 2.0.1 update
+
+ Bug fix: Fixed the bug of not able to use another LCL file path.
+
+ Changed the way of passing file name, preparing for Stable3.0 update.
