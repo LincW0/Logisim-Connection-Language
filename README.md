@@ -2,7 +2,7 @@
 
  A better way of describing Logisim connections.
 
- Current version: Beta2.0
+ Current version: Beta2.0.1
 
  The command-line compiler is using C# now!
 
