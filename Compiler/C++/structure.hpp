@@ -32,9 +32,9 @@ namespace structure
 			{
 				this->father=fat;
 				this->i=0;
-				this->ii=0;
-				xend=0;
-				xstart=-1;
+				//this->ii=0;
+				//xend=0;
+				//xstart=-1;
 				output=ou;
 				for(int j=0;j<999;++j)
 				{
@@ -45,9 +45,9 @@ namespace structure
 			{
 				this->father=NULL;
 				this->i=0;
-				this->ii=0;
+				//this->ii=0;
 				ypos=-1;
-				xend=0;
+				//xend=0;
 				output=1;
 				for(int j=0;j<999;++j)
 				{
