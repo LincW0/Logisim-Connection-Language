@@ -1,9 +1,5 @@
 //2-bit adder
-IN 4;
-XOR 3;
-AND 3;
-OUT 3;
-OR 1;
+IMPT test1, test4  ;
 
 //第一位
 CNCT input[0][0],xor[0][0];

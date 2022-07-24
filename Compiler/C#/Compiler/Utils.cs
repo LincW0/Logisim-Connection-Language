@@ -62,7 +62,109 @@ namespace Utils
                 }
                 j++;
             }
+            if ((from[firstStringLength - secondStringLength - 1] != ((char) 32)) && (from[firstStringLength - secondStringLength -1] != '\t')) return false;
             return true; //Return true if everything matches.
         }
+
+        public static string GetIMPTStringLastKeyword(string line)
+        {
+            int keywordEnd = -1;
+            int keywordStart = -1;
+            for(int i = line.Length - 1; i >= 0; i--)
+            {
+                if ((line[i] != ';') && (line[i] != '\t') && (line[i] != ((char) 32)))
+                {
+                    keywordEnd = i;
+                    break;
+                }
+            }
+            if(keywordEnd == -1)
+            {
+                throw new FormatException("Error: Irregular line.");
+            }
+            for(int i = keywordEnd; i >= 0; i--)
+            {
+                if ((line[i] == ',') || (line[i] == ((char) 32)))
+                {
+                    keywordStart = i + 1;
+                    break;
+                }
+            }
+            return line.Substring(keywordStart, keywordEnd - keywordStart + 1);
+        }
+
+        public static string GetCNCTStringLastKeyword(string from)
+        {
+            int firstStringLength = from.Length;
+            int keywordStart = -1;
+            int keywordEnd;
+            int indexOfComma = from.IndexOf(",");
+            if (indexOfComma == -1)
+            {
+                throw new FormatException("Error: Irregular line.");
+            }
+            keywordEnd = from.Substring(indexOfComma).IndexOf("[");
+            for (int i = indexOfComma + 1; i < from.Length; i++)
+            {
+                if ((from[i] != ((char)32)) && (from[i] == '\t'))
+                {
+                    keywordStart = i;
+                    break;
+                }
+            }
+            return from.Substring(keywordStart, keywordEnd - keywordStart);
+        }
+
+        public static string? GetCNCTStringFirstKeyword(string from)
+        {
+            int firstStringLength = from.Length;
+            int keywordStart = -1;
+            int keywordEnd = from.IndexOf(',');
+            for (int i = 0; i < firstStringLength; i++)
+            {
+                if ((from[i] == ((char)32)) || (from[i] == '\t'))
+                {
+                    keywordStart = i + 1;
+                    break;
+                }
+            }
+            if (keywordStart == -1) return null;
+            string keyword = from.Substring(keywordStart, keywordEnd - keywordStart);
+            return keyword;
+        }
+
+        /*public static KeyValuePair<string, string>? findStringStartKeyValue(string from, Dictionary<string, string> dictionary)
+        {
+            int firstStringLength = from.Length;
+            int keywordStart = -1;
+            int keywordEnd = -1;
+            for (int i = 0; i < firstStringLength; i++)
+            {
+                if ((from[i] == ((char)32)) || (from[i] == '\t'))
+                {
+                    keywordStart = i + 1;
+                    break;
+                }
+            }
+            if (keywordStart == -1) return null;
+            for (int i = keywordStart + 1; i < firstStringLength; i++)
+            {
+                if ((from[i] == ((char)32)) || (from[i] == '\t'))
+                {
+                    keywordEnd = i;
+                    break;
+                }
+            }
+            if (keywordEnd == -1) return null;
+            string keyword = from.Substring(keywordStart, keywordEnd - keywordStart);
+            foreach (KeyValuePair<string, string> keyValuePair in dictionary)
+            {
+                if (String.Compare(from, keyword) == 0)
+                {
+                    return keyValuePair;
+                }
+            }
+            return null;
+        }*/
     }
 }
